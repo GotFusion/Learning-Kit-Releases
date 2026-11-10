@@ -129,7 +129,7 @@ const copy = {
   en: {
     title: "Learning-Kit — Small thoughts. Lasting connections.",
     description:
-      "Start with a few keywords. Let AI find connections and shape your notes, with local Markdown files and a human review before anything is saved.",
+      "Start with a few keywords. Let AI find connections and shape your notes, with local Markdown files and a human review before changes enter your knowledge library.",
     skip: "Skip to main content",
     navigation: "Main navigation",
     language: "Page language",
