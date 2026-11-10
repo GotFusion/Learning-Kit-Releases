@@ -285,8 +285,9 @@ h1 {
 }
 .visual-halo {
   position: absolute;
-  inset: -110px -48px -20px -90px;
+  inset: -110px 0 -20px -90px;
   z-index: -3;
+  pointer-events: none;
   background: radial-gradient(ellipse at 65% 42%, #c6d5de99, transparent 60%);
   filter: blur(25px);
 }
