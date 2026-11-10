@@ -29,6 +29,7 @@ Static HTML, CSS, and JavaScript. No build step, external fonts, CDN, or trackin
 
 - 发布版本、下载文件名、包体积、兼容信息和校验值统一在 **release.js** 中维护。 / Edit **release.js** for release metadata.
 - 中英文案与切换逻辑在 **site.js**；支持 ?lang=zh 和 ?lang=en 分享链接。 / Translation strings and language controls live in **site.js**.
+- 修改 CSS 或 JavaScript 后，同步更新 **index.html** 中对应资源的版本参数，避免浏览器继续使用旧缓存。 / After changing CSS or JavaScript, update its version parameter in **index.html** to invalidate browser caches.
 - 产品窗口为明确标注的工作流示意，不是真实应用截图。 / The product window is a labeled workflow illustration, not an app screenshot.
 - 可在仓库目录运行 **python3 -m http.server 4186 --bind 127.0.0.1** 本地预览。 / Run this command in the repository for a local preview.
 
