@@ -1,6 +1,8 @@
 # Learning-Kit
 
-**[中文官网](https://gotfusion.github.io/Learning-Kit-Releases/?lang=zh)** · **[English website](https://gotfusion.github.io/Learning-Kit-Releases/?lang=en)** · **[下载 / Downloads](https://github.com/GotFusion/Learning-Kit-Releases/releases/tag/v0.1.1-preview.1)**
+<!-- lk-release:readme.header:start -->
+**[中文官网](https://gotfusion.github.io/Learning-Kit-Releases/?lang=zh)** · **[English website](https://gotfusion.github.io/Learning-Kit-Releases/?lang=en)** · **[下载 / Downloads](https://github.com/GotFusion/Learning-Kit-Releases/releases/tag/v0.1.2-preview.1)**
+<!-- lk-release:readme.header:end -->
 
 记录几个关键词，让 AI 整理已有笔记或生成草稿，再通过批注和审核逐步完善你的理解。笔记以 Markdown 保存在本机，支持 Obsidian 文件夹。
 
@@ -8,12 +10,20 @@ Capture a few keywords. Let AI revisit existing notes or prepare a draft, then r
 
 ## 下载安装 / Install
 
-[下载 Apple Silicon 版 DMG / Download the Apple Silicon DMG](https://github.com/GotFusion/Learning-Kit-Releases/releases/download/v0.1.1-preview.1/Learning-Kit-0.1.1-macos-arm64-adhoc.dmg) · [中英安装说明 / Bilingual guide](INSTALL.md)
+<!-- lk-release:readme.download:start -->
+[下载 Apple Silicon 版 DMG / Download the Apple Silicon DMG](https://github.com/GotFusion/Learning-Kit-Releases/releases/download/v0.1.2-preview.1/Learning-Kit-0.1.2-macos-arm64-adhoc.dmg) · [中英安装说明 / Bilingual guide](INSTALL.md)
+<!-- lk-release:readme.download:end -->
 
-- **0.1.1 预览版 / preview**，约 **20.9 MiB**。不包含模型权重。 / No model weights are bundled.
-- 声明最低 macOS 14，已实测 macOS 27.2；Intel 和其他系统版本未验证。 / Declares macOS 14 or later; tested on 27.2. Intel and other macOS versions are unverified.
+<!-- lk-release:readme.version:start -->
+- **0.1.2 预览版 / Preview**，约 **20.9 MiB**。不包含模型权重。 / No model weights are bundled.
+<!-- lk-release:readme.version:end -->
+<!-- lk-release:readme.compatibility:start -->
+- 当前包面向 Apple Silicon，声明最低 macOS 14.0。本次安装包尚未完成原生实机验证。其他架构和 macOS 版本的支持不在本次验证声明中。 / For Apple Silicon. The package declares macOS 14.0 or later. This package has not yet been validated in a native system test. Other architectures and macOS versions are outside this validation claim.
+<!-- lk-release:readme.compatibility:end -->
 - 网页提供中英双语，当前应用界面为中文。 / This website is bilingual. The current application interface is in Chinese.
-- 当前采用 ad-hoc 签名，尚未经过 Apple 公证。首次打开可能需按 [Apple 中文说明](https://support.apple.com/zh-cn/102445) 或 [English instructions](https://support.apple.com/en-us/102445) 允许此次打开。 / This preview is ad-hoc signed, not Apple-notarized; first launch may require an explicit exception.
+<!-- lk-release:readme.signing:start -->
+- 当前安装包采用 ad-hoc 签名，未经过 Apple 公证。首次打开若被系统阻止，确认来源和校验结果后，可到“系统设置 → 隐私与安全性”允许此次打开。 / This package is ad-hoc signed and has not been notarized by Apple. If macOS blocks the first launch, verify the source and checksum, then allow this app in System Settings → Privacy & Security. [Apple 中文说明](https://support.apple.com/zh-cn/102445) · [English instructions](https://support.apple.com/en-us/102445)
+<!-- lk-release:readme.signing:end -->
 
 AI 功能使用本机已登录的 Codex CLI，此路径无需单独填写 ChatGPT API Key。执行 AI 请求时，对话和相关笔记内容会发送至所选服务。
 

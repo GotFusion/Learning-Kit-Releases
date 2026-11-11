@@ -1,5 +1,39 @@
 "use strict";
 
+// lk-release:helpers:start
+function releaseAvailability(language) {
+  const r = window.LK_RELEASE;
+  const preview = r.tag !== "v" + r.version;
+  return language === "zh" ? (preview ? "预览版现已开放" : "现已发布") : (preview ? "Preview now available" : "Now available");
+}
+function releaseCompatibility(language) {
+  const r = window.LK_RELEASE;
+  if (language === "zh") {
+    const tested = r.testedMacOS ? "本次安装包已实测 macOS " + r.testedMacOS + "。" : "本次安装包尚未完成原生实机验证。";
+    return "当前包面向 " + r.architecture + "，声明最低 macOS " + r.minimumMacOS + "。" + tested + "其他架构和 macOS 版本的支持不在本次验证声明中。";
+  }
+  const tested = r.testedMacOS ? "This package has been tested on macOS " + r.testedMacOS + "." : "This package has not yet been validated in a native system test.";
+  return "For " + r.architecture + ". The package declares macOS " + r.minimumMacOS + " or later. " + tested + " Other architectures and macOS versions are outside this validation claim.";
+}
+function releaseSigning(language) {
+  const r = window.LK_RELEASE;
+  if (language === "zh") {
+    if (r.notarized) return "当前安装包采用 Developer ID 签名并已通过 Apple 公证。首次打开时，macOS 仍可能询问是否允许打开。";
+    const identity = r.signing === "adhoc" ? "ad-hoc" : "Developer ID";
+    return "当前安装包采用 " + identity + " 签名，未经过 Apple 公证。首次打开若被系统阻止，确认来源和校验结果后，可到“系统设置 → 隐私与安全性”允许此次打开。";
+  }
+  if (r.notarized) return "This package is Developer ID signed and Apple-notarized. macOS may still ask you to confirm the first launch.";
+  const identity = r.signing === "adhoc" ? "ad-hoc" : "Developer ID";
+  return "This package is " + identity + " signed and has not been notarized by Apple. If macOS blocks the first launch, verify the source and checksum, then allow this app in System Settings → Privacy & Security.";
+}
+function releaseURLPart(value) {
+  return encodeURIComponent(value).replace(/[!'()*]/g, c => "%" + c.charCodeAt(0).toString(16).toUpperCase());
+}
+function releaseShellQuote(value) {
+  return /^[A-Za-z0-9_@%+=:,./-]+$/.test(value) ? value : "'" + value.replaceAll("'", "'\"'\"'") + "'";
+}
+// lk-release:helpers:end
+
 const copy = {
   zh: {
     title: "Learning-Kit — 让想法，慢慢长成知识。",
@@ -11,7 +45,7 @@ const copy = {
     navWorkflow: "如何使用",
     navNotes: "你的笔记",
     navDownload: "下载安装",
-    preview: "预览版现已开放",
+    preview: releaseAvailability("zh"),
     heroEyebrow: "给想法，一个继续生长的地方",
     heroTitle1: "轻轻记下，",
     heroTitle2: "慢慢相连。",
@@ -110,17 +144,14 @@ const copy = {
     installThreeBody:
       "在“设置 → AI 助手 → Codex 连接”检查本机已登录的 Codex CLI，然后开始你的第一组轻记。",
     releaseDisclosure: "安装前：系统支持、首次打开与校验",
-    compatibility:
-      "当前包面向 Apple Silicon，声明最低 macOS {minimumMacOS}，实测 macOS {testedMacOS}。Intel 和其他 macOS 版本尚未验证。",
-    notarization:
-      "当前为 ad-hoc 签名预览版，未经过 Apple 公证。首次打开若被系统阻止，确认来源和校验结果后，可到“系统设置 → 隐私与安全性”允许此次打开。",
+    compatibility: releaseCompatibility("zh"),
+    notarization: releaseSigning("zh"),
     appleHelp: "Apple 官方说明 ↗",
     copyCommand: "复制命令",
     copied: "校验命令已复制。",
     copyFailed: "未能访问剪贴板，请选中并手动复制上方命令。",
     checksumHint: "将 DMG 和校验文件放在同一文件夹，在该目录运行上述命令。",
-    previewLimits:
-      "这是早期预览版。模型服务、旧系统和 WidgetKit 的验证范围，以及会话容量等已知限制，请查看",
+    previewLimits: "当前版本的模型服务、旧系统和 WidgetKit 验证范围，以及会话容量等已知限制，请查看",
     sentenceEnd: "。",
     footerTagline: "记录。理解。相连。",
     githubDownloads: "GitHub 下载仓库 ↗",
@@ -136,7 +167,7 @@ const copy = {
     navWorkflow: "How it works",
     navNotes: "Your notes",
     navDownload: "Get the app",
-    preview: "Preview now available",
+    preview: releaseAvailability("en"),
     heroEyebrow: "A little room for your ideas to grow",
     heroTitle1: "Small thoughts.",
     heroTitle2: "Lasting connections.",
@@ -241,10 +272,8 @@ const copy = {
       "In Settings → AI assistant → Codex connection, check your locally signed-in Codex CLI, then start your first group of notes.",
     releaseDisclosure:
       "Before installing: system support, first launch, and verification",
-    compatibility:
-      "For Apple Silicon. The package declares macOS {minimumMacOS} or later and has been tested on macOS {testedMacOS}. Intel Macs and other macOS versions have not been verified.",
-    notarization:
-      "This preview uses ad-hoc signing and has not been notarized by Apple. If macOS blocks the first launch, verify the source and checksum, then allow this app in System Settings → Privacy & Security.",
+    compatibility: releaseCompatibility("en"),
+    notarization: releaseSigning("en"),
     appleHelp: "Apple’s instructions ↗",
     copyCommand: "Copy command",
     copied: "Verification command copied.",
@@ -252,8 +281,7 @@ const copy = {
       "Clipboard access was unavailable. Select and copy the command above manually.",
     checksumHint:
       "Keep the DMG and checksum file in the same folder, then run this command from that folder.",
-    previewLimits:
-      "This is an early preview. For model-service, older-system and WidgetKit validation scope, plus known limits such as conversation capacity, see the",
+    previewLimits: "For the current release’s model-service, older-system and WidgetKit validation scope, plus known limits such as conversation capacity, see the",
     sentenceEnd: ".",
     footerTagline: "Capture. Understand. Connect.",
     githubDownloads: "Downloads on GitHub ↗",
@@ -265,12 +293,12 @@ const release = window.LK_RELEASE;
 const downloadURL =
   release.repository +
   "/releases/download/" +
-  encodeURIComponent(release.tag) +
+  releaseURLPart(release.tag) +
   "/" +
-  encodeURIComponent(release.file);
+  releaseURLPart(release.file);
 const releaseURL =
-  release.repository + "/releases/tag/" + encodeURIComponent(release.tag);
-const checksumCommand = "shasum -a 256 -c " + release.file + ".sha256";
+  release.repository + "/releases/tag/" + releaseURLPart(release.tag);
+const checksumCommand = "shasum -a 256 -c " + releaseShellQuote(release.file + ".sha256");
 let currentStep = "capture";
 let currentLanguage = "zh";
 let copyStatusKey = "";
@@ -368,6 +396,8 @@ for (const element of document.querySelectorAll("[data-release-link]"))
   element.href = releaseURL;
 for (const element of document.querySelectorAll("[data-checksum-link]"))
   element.href = downloadURL + ".sha256";
+for (const element of document.querySelectorAll("[data-architecture]"))
+  element.textContent = release.architecture;
 for (const element of document.querySelectorAll("[data-release-version]"))
   element.textContent = release.version;
 for (const element of document.querySelectorAll("[data-release-size]")) {

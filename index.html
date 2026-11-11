@@ -35,10 +35,11 @@
       hreflang="en"
       href="https://gotfusion.github.io/Learning-Kit-Releases/?lang=en"
     />
-    <link rel="stylesheet" href="style.css?v=a2d96805" />
-    <script src="release.js?v=0d2fe524" defer></script>
-    <script src="site.js?v=98464e67" defer></script>
-  </head>
+    <link rel="stylesheet" href="style.css?v=a2d96805d9f2" />
+    <script src="release.js?v=4cb5c2267094" defer></script>
+    <script src="site.js?v=36709427a042" defer></script>
+    <meta name="learning-kit-release-template" content="1" />
+</head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">跳到主要内容</a>
     <svg
@@ -123,9 +124,9 @@
           <a
             class="release-pill"
             data-release-link
-            href="https://github.com/GotFusion/Learning-Kit-Releases/releases"
+            href="https://github.com/GotFusion/Learning-Kit-Releases/releases/tag/v0.1.2-preview.1"
             ><span class="status-dot"></span
-            ><span data-release-version>0.1.1</span
+            ><span data-release-version>0.1.2</span
             ><span data-i18n="preview">预览版现已开放</span
             ><span aria-hidden="true">↗</span></a
           >
@@ -147,7 +148,7 @@
             <a
               class="button primary"
               data-download-link
-              href="https://github.com/GotFusion/Learning-Kit-Releases/releases"
+              href="https://github.com/GotFusion/Learning-Kit-Releases/releases/download/v0.1.2-preview.1/Learning-Kit-0.1.2-macos-arm64-adhoc.dmg"
               ><svg class="icon"><use href="#laptop" /></svg
               ><span data-i18n="downloadMac">下载 macOS 版</span
               ><svg class="icon arrow"><use href="#arrow-right" /></svg></a
@@ -160,7 +161,7 @@
             <span data-architecture>Apple Silicon</span
             ><span class="dot-divider">·</span
             ><span data-i18n="noWeights">无需下载模型权重</span
-            ><span data-release-size></span>
+            ><span data-release-size> · 20.9 MiB</span>
           </p>
         </div>
 
@@ -526,14 +527,14 @@
             <a
               class="button download-light"
               data-download-link
-              href="https://github.com/GotFusion/Learning-Kit-Releases/releases"
+              href="https://github.com/GotFusion/Learning-Kit-Releases/releases/download/v0.1.2-preview.1/Learning-Kit-0.1.2-macos-arm64-adhoc.dmg"
               ><svg class="icon"><use href="#laptop" /></svg
               ><span data-i18n="downloadMac">下载 macOS 版</span
               ><svg class="icon arrow"><use href="#arrow-right" /></svg
             ></a>
             <p class="download-details">
-              <span data-release-version>0.1.1</span
-              ><span> · Apple Silicon</span><span data-release-size></span>
+              <span data-release-version>0.1.2</span
+              ><span> · <span data-architecture>Apple Silicon</span></span><span data-release-size> · 20.9 MiB</span>
             </p>
             <p class="app-language" data-i18n="appLanguage">
               网页中英双语 · 当前应用界面为中文。
@@ -541,13 +542,13 @@
             <div class="download-secondary">
               <a
                 data-checksum-link
-                href="https://github.com/GotFusion/Learning-Kit-Releases/releases"
+                href="https://github.com/GotFusion/Learning-Kit-Releases/releases/download/v0.1.2-preview.1/Learning-Kit-0.1.2-macos-arm64-adhoc.dmg.sha256"
                 data-i18n="checksumFile"
                 >SHA-256 校验文件</a
               ><span aria-hidden="true">·</span
               ><a
                 data-release-link
-                href="https://github.com/GotFusion/Learning-Kit-Releases/releases"
+                href="https://github.com/GotFusion/Learning-Kit-Releases/releases/tag/v0.1.2-preview.1"
                 data-i18n="releaseNotes"
                 >发布记录</a
               >
@@ -594,15 +595,10 @@
               ><span class="details-plus" aria-hidden="true">+</span>
             </summary>
             <div class="release-detail-content">
-              <p data-i18n="compatibility">
-                当前包面向 Apple Silicon，声明最低 macOS 14，实测 macOS
-                27.2。Intel 和其他 macOS 版本尚未验证。
-              </p>
+              <p data-i18n="compatibility">当前包面向 Apple Silicon，声明最低 macOS 14.0。本次安装包尚未完成原生实机验证。其他架构和 macOS 版本的支持不在本次验证声明中。</p>
               <p>
                 <span data-i18n="notarization"
-                  >当前为 ad-hoc 签名预览版，未经过 Apple
-                  公证。首次打开若被系统阻止，确认来源和校验结果后，可到“系统设置
-                  → 隐私与安全性”允许此次打开。</span
+                  >当前安装包采用 ad-hoc 签名，未经过 Apple 公证。首次打开若被系统阻止，确认来源和校验结果后，可到“系统设置 → 隐私与安全性”允许此次打开。</span
                 >
                 <a
                   data-apple-help
@@ -613,8 +609,7 @@
               </p>
               <div class="checksum-command">
                 <code data-checksum-command
-                  >shasum -a 256 -c
-                  Learning-Kit-0.1.1-macos-arm64-adhoc.dmg.sha256</code
+                  >shasum -a 256 -c Learning-Kit-0.1.2-macos-arm64-adhoc.dmg.sha256</code
                 ><button type="button" id="copy-checksum">
                   <svg class="icon"><use href="#copy" /></svg
                   ><span data-i18n="copyCommand">复制命令</span>
@@ -631,12 +626,11 @@
               </p>
               <p>
                 <span data-i18n="previewLimits"
-                  >这是早期预览版。模型服务、旧系统和 WidgetKit
-                  的验证范围，以及会话容量等已知限制，请查看</span
+                  >当前版本的模型服务、旧系统和 WidgetKit 验证范围，以及会话容量等已知限制，请查看</span
                 >
                 <a
                   data-release-link
-                  href="https://github.com/GotFusion/Learning-Kit-Releases/releases"
+                  href="https://github.com/GotFusion/Learning-Kit-Releases/releases/tag/v0.1.2-preview.1"
                   data-i18n="releaseNotes"
                   >发布记录</a
                 ><span data-i18n="sentenceEnd">。</span>
